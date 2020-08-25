@@ -1,4 +1,5 @@
 ﻿using Exiled.API.Enums;
+using Exiled.API.Extensions;
 using Exiled.API.Features;
 using MEC;
 using scp035.API;
@@ -24,8 +25,8 @@ namespace CISpy
 				}
 			}
 			spies.Add(player, isVulnerable);
-			player.Broadcast(10, "<size=60>You are a <b><color=\"green\">CISpy</color></b></size>\nCheck your console by pressing [`] or [~] for more info.");
-			player.ReferenceHub.characterClassManager.TargetConsolePrint(player.ReferenceHub.scp079PlayerScript.connectionToClient, "You are a Chaos Insurgency Spy! You are immune to MTF for now, but as soon as you damage an MTF, your spy immunity will turn off.\n\nHelp Chaos win the round and kill as many MTF and Scientists as you can.", "yellow");
+			player.Broadcast(10, "<size=32>Eres un <b><color=\"green\">Espia Insurgente del Caos</color></b></size>\n<size=25>Tu objetivo es asesinar a los <color=#FFE800>cientificos</color>/<color=#003EFF>MTF</color> y ayudar a los <color=#FF8000>Class-D sigilosamente</color>\n<i>[<color=#CE1111>Ñ</color>] O [<color=#CE1111>~</color>] para mas informacion.</i></size>");
+			player.ReferenceHub.characterClassManager.TargetConsolePrint(player.ReferenceHub.scp079PlayerScript.connectionToClient, "Eres un espia de la insugencia del caos, eres inmune al daño de los MTF hasta que te revelen.\n\nAyuda a los Chaos a ganara esta ronda, mata a tantos MTF y cientificos como puedas.", "yellow");
 		}
 
 		private Player TryGet035()
@@ -42,9 +43,9 @@ namespace CISpy
 				Vector3 pos = spy.Key.Position;
 				Vector3 rot = spy.Key.Rotation;
 				int health = (int)spy.Key.Health;
-				uint ammo1 = spy.Key.GetAmmo(AmmoType.Nato556);
-				uint ammo2 = spy.Key.GetAmmo(AmmoType.Nato762);
-				uint ammo3 = spy.Key.GetAmmo(AmmoType.Nato9);
+				uint ammo1 = spy.Key.Ammo[(int)AmmoType.Nato556];
+				uint ammo2 = spy.Key.Ammo[(int)AmmoType.Nato762];
+				uint ammo3 = spy.Key.Ammo[(int)AmmoType.Nato9];
 
 				spy.Key.SetRole(RoleType.ChaosInsurgency);
 
@@ -55,12 +56,12 @@ namespace CISpy
 					spy.Key.Inventory.items.Clear();
 					foreach (var item in items) spy.Key.Inventory.AddNewItem(item.id);
 					spy.Key.Health = health;
-					spy.Key.SetAmmo(AmmoType.Nato556, ammo1);
-					spy.Key.SetAmmo(AmmoType.Nato762, ammo2);
-					spy.Key.SetAmmo(AmmoType.Nato9, ammo3);
+					spy.Key.Ammo[(int)AmmoType.Nato556] = ammo1;
+					spy.Key.Ammo[(int)AmmoType.Nato762] = ammo2;
+					spy.Key.Ammo[(int)AmmoType.Nato9] = ammo3;
 				});
 
-				spy.Key.Broadcast(10, "Your fellow <color=\"green\">Chaos Insurgency</color> have died.\nYou have been revealed!");
+				spy.Key.Broadcast(10, "Tu compañero <color=\"green\">Chaos Insurgency</color> murio.\nLos MTF saben que eres un traidor!");
 			}
 			spies.Clear();
 		}

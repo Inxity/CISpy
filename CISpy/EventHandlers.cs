@@ -96,7 +96,7 @@ namespace CISpy
 			{
 				if (!isDisplayFriendly)
 				{
-					ev.Attacker.Broadcast(3, "You are shooting a <b><color=\"green\">CISpy!</color></b>");
+					ev.Attacker.Broadcast(3, "Estas disparandole al<b><color=\"green\">espia de los chaos insurgency MATALO!</color></b>");
 					isDisplayFriendly = true;
 				}
 				Timing.CallDelayed(3f, () =>
@@ -146,7 +146,7 @@ namespace CISpy
 				if (!spies[ev.Shooter])
 				{
 					spies[ev.Shooter] = true;
-					ev.Shooter.Broadcast(10, $"You have attacked a {(target.Team == Team.MTF ? "<color=#00b0fc>Nine Tailed Fox" : "<color=#fcff8d>Scientist")}</color>, you are now able to be killed by <color=#00b0fc>Nine Tailed Fox</color> and <color=#fcff8d>Scientists</color>.");
+					ev.Shooter.Broadcast(10, $"Has atacado a un {(target.Team == Team.MTF ? "<color=#00b0fc>MTF" : "<color=#fcff8d>Cientifico")}</color>, ahora eres capaz de ser asesinado por <color=#00b0fc>MTF</color> y <color=#fcff8d>cientificos</color> ten cuidado.");
 				}
 				GrantFF(ev.Shooter);
 			}
