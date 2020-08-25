@@ -4,8 +4,8 @@ namespace CISpy
 {
 	public class CISpy : Plugin<Config>
 	{
-		internal static CISpy instance;
-		private EventHandlers ev;
+		public static CISpy instance;
+		public EventHandlers ev;
 
 		public override void OnEnabled() 
 		{

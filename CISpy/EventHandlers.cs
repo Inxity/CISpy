@@ -7,12 +7,12 @@ using Exiled.Events.EventArgs;
 
 namespace CISpy
 {
-	partial class EventHandlers
+	public partial class EventHandlers
 	{
-		internal static Dictionary<Player, bool> spies = new Dictionary<Player, bool> ();
-		private List<Player> ffPlayers = new List<Player>();
+		public static Dictionary<Player, bool> spies = new Dictionary<Player, bool> ();
+		public List<Player> ffPlayers = new List<Player>();
 
-		private bool isDisplayFriendly = false;
+		public bool isDisplayFriendly = false;
 		//private bool isDisplaySpy = false;
 
 		private Random rand = new Random();
