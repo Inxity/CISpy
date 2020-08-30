@@ -89,14 +89,14 @@ namespace CISpy
 			} 
 			catch (Exception x)
 			{
-				Log.Debug("SCP-035 not installed, skipping method call...");
+				Log.Error($"SCP-035 not installed, skipping method call... {x}");
 			}
 
 			if (spies.ContainsKey(ev.Target) && !spies.ContainsKey(ev.Attacker) && ev.Target.Id != ev.Attacker.Id && (ev.Attacker.Team == Team.CHI || ev.Attacker.Team == Team.CDP))
 			{
 				if (!isDisplayFriendly)
 				{
-					ev.Attacker.Broadcast(3, "Estas disparandole al<b><color=\"green\">espia de los chaos insurgency MATALO!</color></b>");
+					ev.Attacker.Broadcast(3, "Estas disparandole al<b><color=\"green\">espia de los chaos insurgency</color></b>");
 					isDisplayFriendly = true;
 				}
 				Timing.CallDelayed(3f, () =>
@@ -138,7 +138,7 @@ namespace CISpy
 			}
 			catch (Exception x)
 			{
-				Log.Debug("SCP-035 not installed, skipping method call...");
+				Log.Error($"SCP-035 not installed, skipping method call... {x}");
 			}
 
 			if (spies.ContainsKey(ev.Shooter) && !spies.ContainsKey(target) && (target.Team == Team.RSC || target.Team == Team.MTF) && target.Id != scp035?.Id)
@@ -146,7 +146,7 @@ namespace CISpy
 				if (!spies[ev.Shooter])
 				{
 					spies[ev.Shooter] = true;
-					ev.Shooter.Broadcast(10, $"Has atacado a un {(target.Team == Team.MTF ? "<color=#00b0fc>MTF" : "<color=#fcff8d>Cientifico")}</color>, ahora eres capaz de ser asesinado por <color=#00b0fc>MTF</color> y <color=#fcff8d>cientificos</color> ten cuidado.");
+					ev.Shooter.Broadcast(10, $"Has atacado a un {(target.Team == Team.MTF ? "<color=#00b0fc>MTF" : "<color=#fcff8d>Cientifico")}</color>, ten cuidado de que no te haya visto los <color=#00b0fc>MTF</color> y <color=#fcff8d>cientificos</color> o podrian matarte");
 				}
 				GrantFF(ev.Shooter);
 			}

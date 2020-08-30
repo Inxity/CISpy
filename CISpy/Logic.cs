@@ -26,7 +26,7 @@ namespace CISpy
 			}
 			spies.Add(player, isVulnerable);
 			player.Broadcast(10, "<size=32>Eres un <b><color=\"green\">Espia Insurgente del Caos</color></b></size>\n<size=25>Tu objetivo es asesinar a los <color=#FFE800>cientificos</color>/<color=#003EFF>MTF</color> y ayudar a los <color=#FF8000>Class-D sigilosamente</color>\n<i>[<color=#CE1111>Ñ</color>] O [<color=#CE1111>~</color>] para mas informacion.</i></size>");
-			player.ReferenceHub.characterClassManager.TargetConsolePrint(player.ReferenceHub.scp079PlayerScript.connectionToClient, "Eres un espia de la insugencia del caos, eres inmune al daño de los MTF hasta que te revelen.\n\nAyuda a los Chaos a ganara esta ronda, mata a tantos MTF y cientificos como puedas.", "yellow");
+			player.ReferenceHub.characterClassManager.TargetConsolePrint(player.ReferenceHub.scp079PlayerScript.connectionToClient, "Eres un espia de la insugencia del caos, eres inmune al daño de los MTF hasta que te revelen.\n\nAyuda a los Chaos a ganara esta ronda, mata a tantos MTF y cientificos como puedas pero recuerda, si un MTF o cientifico te ve matando a otro seras revelado", "yellow");
 		}
 
 		private Player TryGet035()
@@ -61,7 +61,7 @@ namespace CISpy
 					spy.Key.Ammo[(int)AmmoType.Nato9] = ammo3;
 				});
 
-				spy.Key.Broadcast(10, "Tu compañero <color=\"green\">Chaos Insurgency</color> murio.\nLos MTF saben que eres un traidor!");
+				spy.Key.Broadcast(10, "Tus compañeros <color=\"green\">Chaos Insurgency</color> murieron.\nLos MTF saben que eres un traidor!");
 			}
 			spies.Clear();
 		}
@@ -102,7 +102,7 @@ namespace CISpy
 			}
 			catch (Exception x)
 			{
-				Log.Debug("SCP-035 not installed, skipping method call...");
+				Log.Error($"SCP-035 not installed, skipping method call... {x}");
 			}
 
 			int playerid = -1;
