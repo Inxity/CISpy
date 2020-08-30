@@ -89,7 +89,7 @@ namespace CISpy
 			} 
 			catch (Exception x)
 			{
-				Log.Error($"SCP-035 not installed, skipping method call... {x}");
+				//Log.Info($"SCP-035 not installed, skipping method call... {x}");
 			}
 
 			if (spies.ContainsKey(ev.Target) && !spies.ContainsKey(ev.Attacker) && ev.Target.Id != ev.Attacker.Id && (ev.Attacker.Team == Team.CHI || ev.Attacker.Team == Team.CDP))
@@ -138,7 +138,7 @@ namespace CISpy
 			}
 			catch (Exception x)
 			{
-				Log.Error($"SCP-035 not installed, skipping method call... {x}");
+				//Log.Error($"SCP-035 not installed, skipping method call... {x}");
 			}
 
 			if (spies.ContainsKey(ev.Shooter) && !spies.ContainsKey(target) && (target.Team == Team.RSC || target.Team == Team.MTF) && target.Id != scp035?.Id)
