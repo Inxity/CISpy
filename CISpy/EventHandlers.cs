@@ -96,7 +96,7 @@ namespace CISpy
 			{
 				if (!isDisplayFriendly)
 				{
-					ev.Attacker.Broadcast(3, "Estas disparandole al<b><color=\"green\">espia de los chaos insurgency</color></b>");
+					ev.Attacker.Broadcast(3, "<color=red>[</color><color=green>Chaos</color><color=red>]</color> <i>Estas disparandole a nuestro espia, DETENTE!</i>");
 					isDisplayFriendly = true;
 				}
 				Timing.CallDelayed(3f, () =>
