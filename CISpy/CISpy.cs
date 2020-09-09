@@ -22,6 +22,7 @@ namespace CISpy
 			Exiled.Events.Handlers.Player.Hurting += ev.OnPlayerHurt;
 			Exiled.Events.Handlers.Player.Shooting += ev.OnShoot;
 			Exiled.Events.Handlers.Player.Left += ev.OnPlayerLeave;
+			Exiled.Events.Handlers.Warhead.Detonated += ev.AlHacerBoom;
 		}
 
 		public override void OnDisabled() 
@@ -35,6 +36,7 @@ namespace CISpy
 			Exiled.Events.Handlers.Player.Hurting -= ev.OnPlayerHurt;
 			Exiled.Events.Handlers.Player.Shooting -= ev.OnShoot;
 			Exiled.Events.Handlers.Player.Left -= ev.OnPlayerLeave;
+			Exiled.Events.Handlers.Warhead.Detonated -= ev.AlHacerBoom;
 
 			ev = null;
 		}

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Exiled.Events.EventArgs;
+using Exiled.API.Enums;
 
 namespace CISpy
 {
@@ -48,6 +49,31 @@ namespace CISpy
 						}
 					}
 				});
+			}
+		}
+
+		public bool IsSpy(Player p)
+		{
+			try
+			{
+
+				return spies.ContainsKey(p);
+			}
+			catch (Exception)
+			{
+				Log.Error("No se encontró CiSpy");
+				return false;
+			}
+		}
+
+		public void AlHacerBoom()
+		{
+			foreach (Player p in Player.List)
+			{
+				if (IsSpy(p) && p.CurrentRoom != null && p.CurrentRoom.Zone != ZoneType.Surface)
+				{
+					p.Kill();
+				}
 			}
 		}
 
