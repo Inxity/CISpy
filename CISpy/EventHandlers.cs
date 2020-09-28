@@ -87,6 +87,11 @@ namespace CISpy
 
 		public void OnPlayerDie(DiedEventArgs ev)
 		{
+
+			if(spies.ContainsKey(ev.Killer) && ev.Killer != ev.Target) {
+                ev.Target.Broadcast(7, "<i>Fuiste asesinado por un <color=red>espia</color></i>");
+            }
+
 			if (spies.ContainsKey(ev.Target))
 			{
 				spies.Remove(ev.Target);
