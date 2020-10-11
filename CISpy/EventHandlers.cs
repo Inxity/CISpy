@@ -89,7 +89,7 @@ namespace CISpy
 		{
 
 			if(spies.ContainsKey(ev.Killer) && ev.Killer != ev.Target) {
-                ev.Target.Broadcast(7, "<i>Fuiste asesinado por un <color=red>espia</color></i>");
+                ev.Target.Broadcast(7, "<i>Fuiste asesinado por un <color=red>espia de la chaos insurgency</color></i>");
             }
 
 			if (spies.ContainsKey(ev.Target))
