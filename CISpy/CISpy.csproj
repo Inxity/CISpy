@@ -36,11 +36,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\AppData\Roaming\EXILED\Plugins\dependencies\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\..\Documents\Server_SCP\SCPSL_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Server_SCP\SCPSL_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp_public">
-      <HintPath>..\..\..\..\Documents\Server_SCP\SCPSL_Data\Managed\Assembly-CSharp_public.dll</HintPath>
+    <Reference Include="Assembly-CSharp_public, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Server_SCP\SCPSL_Data\Managed\Assembly-CSharp_public.dll</HintPath>
     </Reference>
     <Reference Include="Exiled.API, Version=2.1.15.0, Culture=neutral, processorArchitecture=AMD64">
       <HintPath>..\packages\EXILED.2.1.15\lib\net472\Exiled.API.dll</HintPath>
