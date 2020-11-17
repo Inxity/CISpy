@@ -36,8 +36,10 @@ namespace CISpy
 
 		private void RevealSpies()
 		{
+			if (spies.IsEmpty()) return;
 			foreach (KeyValuePair<Player, bool> spy in spies)
 			{
+				if (spy.Key == null) continue;
 				Inventory.SyncListItemInfo items = new Inventory.SyncListItemInfo();
 				foreach (var item in spy.Key.Inventory.items) items.Add(item);
 				Vector3 pos = spy.Key.Position;
@@ -46,9 +48,7 @@ namespace CISpy
 				uint ammo1 = spy.Key.Ammo[(int)AmmoType.Nato556];
 				uint ammo2 = spy.Key.Ammo[(int)AmmoType.Nato762];
 				uint ammo3 = spy.Key.Ammo[(int)AmmoType.Nato9];
-
 				spy.Key.SetRole(RoleType.ChaosInsurgency);
-
 				Timing.CallDelayed(0.3f, () =>
 				{
 					spy.Key.Position = pos;
@@ -60,7 +60,6 @@ namespace CISpy
 					spy.Key.Ammo[(int)AmmoType.Nato762] = ammo2;
 					spy.Key.Ammo[(int)AmmoType.Nato9] = ammo3;
 				});
-
 				spy.Key.Broadcast(10, "Tus compañeros <color=\"green\">Chaos Insurgency</color> murieron.\nLos MTF saben que eres un traidor!");
 			}
 			spies.Clear();
