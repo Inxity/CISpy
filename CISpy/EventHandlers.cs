@@ -112,17 +112,6 @@ namespace CISpy
 				RemoveFF(ev.Attacker);
 			}
 
-			Player scp035 = null;
-
-			try
-			{
-				scp035 = TryGet035();
-			} 
-			catch (Exception x)
-			{
-				//Log.Info($"SCP-035 not installed, skipping method call... {x}");
-			}
-
 			if (spies.ContainsKey(ev.Target) && !spies.ContainsKey(ev.Attacker) && ev.Target.Id != ev.Attacker.Id && (ev.Attacker.Team == Team.CHI || ev.Attacker.Team == Team.CDP))
 			{
 				if (!isDisplayFriendly)
@@ -136,7 +125,7 @@ namespace CISpy
 				});
 				ev.Amount = 0;
 			}
-			else if (!spies.ContainsKey(ev.Target) && spies.ContainsKey(ev.Attacker) && (ev.Target.Team == Team.CHI || ev.Target.Team == Team.CDP) && ev.Target.Id != scp035?.Id)
+			else if (!spies.ContainsKey(ev.Target) && spies.ContainsKey(ev.Attacker) && ev.Target.Team == Team.CHI)
 			{
 				ev.Amount = 0;
 			}
@@ -161,18 +150,7 @@ namespace CISpy
 			Player target = Player.Get(ev.Target);
 			if (target == null) return;
 
-			Player scp035 = null;
-
-			try
-			{
-				scp035 = TryGet035();
-			}
-			catch (Exception x)
-			{
-				//Log.Error($"SCP-035 not installed, skipping method call... {x}");
-			}
-
-			if (spies.ContainsKey(ev.Shooter) && !spies.ContainsKey(target) && (target.Team == Team.RSC || target.Team == Team.MTF) && target.Id != scp035?.Id)
+			if (spies.ContainsKey(ev.Shooter) && !spies.ContainsKey(target) && target.Team == Team.RSC)
 			{
 				if (!spies[ev.Shooter])
 				{

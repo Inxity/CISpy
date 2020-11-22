@@ -2,7 +2,6 @@
 using Exiled.API.Extensions;
 using Exiled.API.Features;
 using MEC;
-using scp035.API;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,10 +28,6 @@ namespace CISpy
 			player.ReferenceHub.characterClassManager.TargetConsolePrint(player.ReferenceHub.scp079PlayerScript.connectionToClient, "Eres un espia de la insugencia del caos.\n\nAyuda a los Chaos a ganara esta ronda, mata a tantos MTF y cientificos como puedas pero recuerda, si un MTF o cientifico te ve matando a otro seras revelado", "yellow");
 		}
 
-		private Player TryGet035()
-		{
-			return Scp035Data.GetScp035();
-		}
 
 		private void RevealSpies()
 		{
@@ -93,26 +88,16 @@ namespace CISpy
 
 		private void CheckSpies(Player exclude = null)
 		{
-			Player scp035 = null;
-
-			try
-			{
-				scp035 = TryGet035();
-			}
-			catch (Exception x)
-			{
-				//Log.Error($"SCP-035 not installed, skipping method call... {x}");
-			}
+			
 
 			int playerid = -1;
 			if (exclude != null) playerid = exclude.Id;
 			List<Player> pList = Player.List.Where(x =>
 			x.Id != playerid &&
-			x.Id != scp035?.Id &&
 			!spies.ContainsKey(x)).ToList();
 
 			bool CiAlive = CountRoles(Team.CHI, pList) > 0;
-			bool ScpAlive = CountRoles(Team.SCP, pList) > 0 + (scp035 != null ? 1 : 0);
+			bool ScpAlive = CountRoles(Team.SCP, pList) > 0;
 			bool DClassAlive = CountRoles(Team.CDP, pList) > 0;
 			bool ScientistsAlive = CountRoles(Team.RSC, pList) > 0;
 			bool MTFAlive = CountRoles(Team.MTF, pList) > 0;
